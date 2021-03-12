@@ -28,12 +28,7 @@ sap.ui
 									evt.to.setModel(evt.data.oModel);
 									evt.to.setBindingContext(evt.data);
 								} else {
-									var oModel = new sap.ui.model.odata.v4.ODataModel({
-										groupId: "$direct",
-										synchronizationMode : "None",
-										serviceUrl : "https://89.40.120.71:8011/odata/"
-									});
-									evt.to.setModel(oModel);
+
 								}
 							}
 						}
