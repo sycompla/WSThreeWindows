@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "csoport": 0,
+      "SOCKETID": "10eda",
+      "userid": "operationalTesterPartner"
+    },
+    {
+      "csoport": 0,
+      "SOCKETID": "10ec2",
+      "userid": "operationTester"
+    },
+    {
+      "csoport": 0,
+      "SOCKETID": "11050",
+      "userid": "valaki"
+    }
+  ],
+  "name": "USERS",
+  "echo": "100000000000"
+}

@@ -1,0 +1,28 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="sources.controller.ServiceData" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:ui="sap.ui.commons">
+	<Page title="Service data" id="page" showNavButton="true"
+		navButtonPress="handleNavButtonPress">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+			<l:content>
+				<f:SimpleForm id="ServiceForm" minWidth="1024"
+					maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+					title="Service" labelSpanL="3" labelSpanM="3" emptySpanL="4"
+					emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+					<f:content>
+						<Label text="Service" />
+						<Input id="ServiceId" value="{service}" valueLiveUpdate="false" />
+						<Label text="ThreadId" />
+						<Input id="ThreadIdId" value="{threadId}" valueLiveUpdate="false" />
+						<Label text="Result" />
+						<Input id="ResultId" value="{result}" valueLiveUpdate="false" />
+						<Label text="Resulr message" />
+						<Input id="ResultMId" value="{resultMessage}" valueLiveUpdate="false" />
+						<Label text="Result description" />
+						<Input id="ResultDId" value="{resultDescription}" valueLiveUpdate="false" />
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+	</Page>
+</core:View>

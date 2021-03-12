@@ -1,0 +1,44 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" controllerName="sources.controller.Services">
+  <Shell appWidthLimited="false">
+  <App class="sapUiResponsiveMargin" width="auto"  xmlns:f="sap.ui.layout.form">
+    <pages>
+    <Page title="User's services" showNavButton="true"
+		  navButtonPress="handleNavButtonPress">
+    <content>
+		<VBox fitContainer="true">
+			<Table
+					id="serviceTable"
+					inset="false"
+					items="{
+						path: '/data'
+					}"
+					class="sapFDynamicPageAlignContent"
+					width="auto">
+				<columns>
+					<Column width="12em">
+						<Text text="Service"/>
+					</Column>
+					<Column>
+						<Text text="Result"/>
+					</Column>
+					<Column>
+						<Text text="ResultMessage"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press=".onListItemPress">
+						<cells>
+							<ObjectIdentifier title="{service}" text="{products>ProductId}"/>
+							<Label text="{result}"/>
+							<Label text="{resultMessage}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+    </content>
+	</Page>
+	</pages>
+  </App>
+  </Shell>
+</mvc:View>

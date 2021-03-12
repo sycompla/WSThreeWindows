@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<title>Vendor form</title>
+	<script
+        id="sap-ui-bootstrap"
+        src="https://sapui5.netweaver.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-bindingSyntax="complex"
+		>
+    </script>
+    
+	<script>
+
+				sap.ui.localResources("sources");
+				var app = new sap.m.App({initialPage:"idUsers"});
+				var pageUsers = sap.ui.view({id:"idUsers", viewName:"sources.view.Users", type:sap.ui.core.mvc.ViewType.XML});
+				app.addPage(pageUsers);
+				var pageServices = sap.ui.view({id:"idServices", viewName:"sources.view.Services", type:sap.ui.core.mvc.ViewType.XML});
+				app.addPage(pageServices);
+				var pageServiceData = sap.ui.view({id:"idServiceData", viewName:"sources.view.ServiceData", type:sap.ui.core.mvc.ViewType.XML});
+				app.addPage(pageServiceData);
+				app.placeAt("content");
+
+	</script>
+
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>
