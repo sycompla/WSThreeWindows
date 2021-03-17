@@ -1,9 +1,66 @@
-<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" controllerName="sources.controller.Users">
+<mvc:View xmlns="sap.m"
+		  xmlns:core="sap.ui.core"
+		  xmlns:l="sap.ui.layout"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:f="sap.f"
+		  xmlns:card="sap.f.cards"
+		  xmlns:suite="sap.suite.ui.microchart"
+		  controllerName="sources.controller.Users">
 	<Shell appWidthLimited="false">
-		<App class="sapUiResponsiveMargin" width="auto"  xmlns:f="sap.ui.layout.form">
+		<App class="sapUiResponsiveMargin" width="auto" >
 			<pages>
 				<Page title="Users">
 					<content>
+
+						<ScrollContainer
+								id="ScrollP"
+								height="100%"
+								width="100%"
+								vertical="true">
+
+						<f:GridContainer
+								id="grid1"
+								class="sapUiSmallMargin"
+								snapToRow="true"
+								items="{users>/data}">
+						<f:layout>
+							<f:GridContainerSettings rowSize="84px" columnSize="84px" gap="8px" />
+						</f:layout>
+						<f:layoutXS>
+							<f:GridContainerSettings rowSize="70px" columnSize="70px" gap="8px" />
+						</f:layoutXS>
+							<f:items>
+
+								<f:Card >
+									<f:header>
+										<card:Header
+												title="{users>userid}"
+												subtitle="{users>SOCKETID}"
+												iconSrc="sap-icon://bus-public-transport"
+												press="onHeaderPress"/>
+									</f:header>
+									<f:layoutData>
+										<f:GridContainerItemLayoutData minRows="2" columns="4" />
+									</f:layoutData>
+									<f:content>
+										<suite:ComparisonMicroChart scale="M" size="Responsive">
+											<suite:data>
+												<suite:ComparisonMicroChartData title="waiting for response"
+																		  value="1" color="Critical" />
+												<suite:ComparisonMicroChartData title="completed"
+																		  value="1" color="darkblue" />
+												<suite:ComparisonMicroChartData title="success"
+																		  value="1" color="Good" />
+												<suite:ComparisonMicroChartData title="failed"
+																				value="1" color="Error" />
+											</suite:data>
+										</suite:ComparisonMicroChart>
+									</f:content>
+								</f:Card>
+							</f:items>
+						</f:GridContainer>
+						</ScrollContainer>
+						<!--
 						<VBox fitContainer="true">
 							<Table
 									id="userTable"
@@ -35,6 +92,7 @@
 								</items>
 							</Table>
 						</VBox>
+						-->
 					</content>
 				</Page>
 			</pages>
