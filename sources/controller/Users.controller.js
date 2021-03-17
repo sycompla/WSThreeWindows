@@ -5,6 +5,7 @@ sap.ui
 	model: {},
 	usersDataSource: {},
 	services: {},
+					view: {},
 
 	onInit: async function(evt) {
 		model = new sap.ui.model.json.JSONModel()
@@ -12,7 +13,9 @@ sap.ui
 
 		usersDataSource = JSON.parse(model.getJSON());
 
-		this.loadFromDataSource(usersDataSource)
+		this.loadFromDataSource(usersDataSource);
+
+		view = this.getView();
 
 	},
 	loadFromDataSource: function(dataSource) {
@@ -99,10 +102,9 @@ sap.ui
 	},
 
 	onItemPress: async function (event) {
-		console.log(event);
-		var bindingContext = event.getSource().getBindingContext("services");
-		var recordId = bindingContext.getProperty("threadId");
-		var myObject = bindingContext.getObject();
+		let bindingContext = event.getSource().getBindingContext("services");
+		let recordId = bindingContext.getProperty("threadId");
+		let myObject = bindingContext.getObject();
 		//app.to("idServiceData", "slide", bindingContext);
 		console.log(recordId);
 		console.log(myObject.service);
@@ -110,18 +112,51 @@ sap.ui
 		let serviceDataModel = new sap.ui.model.json.JSONModel()
 
 		serviceDataModel.setData(myObject);
-		console.log(servicesModel);
-		await this.getView().setModel(serviceDataModel, "serviceData");
+		view.setModel(serviceDataModel, recordId);
 
-		let oModel = this.getView().getModel();
-		let container = this.getView().byId("grid1");
-		let card = new sap.f.Card();
+		let container = view.byId("grid1");
+		let card = new sap.f.Card({
+			content: new sap.ui.layout.VerticalLayout({
+				content: [
+					new sap.m.Label({
+						text: "Service"
+					}),
+					new sap.m.Text({
+						text: "{" + recordId + ">/service}"
+					}),new sap.m.Label({
+						text: "ThreadId"
+					}),
+					new sap.m.Text({
+						text: "{" + recordId + ">/threadId}"
+					}),new sap.m.Label({
+						text: "Result"
+					}),
+					new sap.m.Text({
+						text: "{" + recordId + ">/result}"
+					}),new sap.m.Label({
+						text: "Result Message"
+					}),
+					new sap.m.Text({
+						text: "{" + recordId + ">/resultMessage}"
+					}),new sap.m.Label({
+						text: "Result Description"
+					}),
+					new sap.m.Text({
+						text: "{" + recordId + ">/resultDescription}"
+					}),
+				]
+			})
+		});
 		let header = new sap.f.cards.Header({
-			title: "Services"
+			title: "Service Data"
 		});
 		let layoutData = new sap.f.GridContainerItemLayoutData({
 			minRows: 3,
 			columns: 4
-		})
+		});
+
+		card.setHeader(header);
+		card.setLayoutData(layoutData);
+		container.addItem(card);
 	}
 });
